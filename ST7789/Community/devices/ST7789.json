@@ -1,7 +1,7 @@
 {
     "$schema": "./mfdevice.schema.json",
     "Info": {
-      "Label": "Mobiflight's template",
+      "Label": "ST7789",
       "Type": "MOBIFLIGHT_TEMPLATE",
       "Author": "Mobiflight",
       "URL": "https://github.com",
@@ -9,9 +9,17 @@
     },
     "Config": {
       "Pins": [
-        "Pin 1",
-        "Pin 2",
-        "Pin 3"
+        "DC Pin",
+        "CS Pin",
+        "SCK Pin",
+        "MOSI Pin",
+        "RST Pin"
+      ],
+      "Rotation:": [
+        "0",
+        "90",
+        "180",
+        "270"
       ],
       "isI2C": false
     },

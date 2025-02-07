@@ -1,20 +1,32 @@
-#include "MyCustomClass.h"
+#include "ST7789.h"
 #include "allocateMem.h"
 #include "commandmessenger.h"
+
+
+
 
 /* **********************************************************************************
     This is just the basic code to set up your custom device.
     Change/add your code as needed.
 ********************************************************************************** */
 
-MyCustomClass::MyCustomClass(uint8_t Pin1, uint8_t Pin2)
+
+
+MyCustomClass::MyCustomClass(uint8_t dc_pin, uint8_t cs_pin, uint8_t sck_pin, uint8_t mosi_pin, uint8_t rst_pin, uint8_t rotation)
 {
-    _pin1 = Pin1;
-    _pin2 = Pin2;
+    _dc_pin = dc_pin;
+    _cs_pin = cs_pin;
+    _sck_pin = sck_pin;
+    _mosi_pin = mosi_pin;
+    _rst_pin = -1;
+    _rotation = rotation;
 }
+
 
 void MyCustomClass::begin()
 {
+    Arduino_DataBus *bus = new Arduino_ESP32SPI(_dc_pin, _cs_pin, _sck_pin, _mosi_pin);
+    Arduino_GFX *gfx = new Arduino_ST7789(bus, -1 /* RST */, 1 /* rotation */, true /* IPS */);
 }
 
 void MyCustomClass::attach(uint16_t Pin3, char *init)

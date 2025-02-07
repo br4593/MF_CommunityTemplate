@@ -77,7 +77,7 @@ void MFCustomDevice::attach(uint16_t adrPin, uint16_t adrType, uint16_t adrConfi
 
     char   *params, *p = NULL;
     char    parameter[MEMLEN_STRING_BUFFER];
-    uint8_t _pin1, _pin2, _pin3;
+    uint8_t _dc_pin, _cs_pin, _sck_pin, _mosi_pin, _rst_pin,_rotation;
 
     /* **********************************************************************************
         Read the Type from the EEPROM or Flash, copy it into a buffer and evaluate it
@@ -107,13 +107,20 @@ void MFCustomDevice::attach(uint16_t adrPin, uint16_t adrType, uint16_t adrConfi
         /* **********************************************************************************************
             Split the pins up into single pins. As the number of pins could be different between
             multiple devices, it is done here.
-        ********************************************************************************************** */
+        **************************************Z******************************************************** */
         params = strtok_r(parameter, "|", &p);
-        _pin1  = atoi(params);
+        _dc_pin  = atoi(params);
         params = strtok_r(NULL, "|", &p);
-        _pin2  = atoi(params);
+        _cs_pin  = atoi(params);
         params = strtok_r(NULL, "|", &p);
-        _pin3  = atoi(params);
+        _sck_pin  = atoi(params);
+        params = strtok_r(NULL, "|", &p);
+        _mosi_pin  = atoi(params);
+        params = strtok_r(NULL, "|", &p);
+        _rst_pin  = atoi(params);
+        params = strtok_r(NULL, "|", &p);
+        _rotation  = atoi(params);
+
 
         /* **********************************************************************************
             Read the configuration from the EEPROM or Flash, copy it into a buffer.
@@ -142,7 +149,7 @@ void MFCustomDevice::attach(uint16_t adrPin, uint16_t adrType, uint16_t adrConfi
         ********************************************************************************** */
         // In most cases you need only one of the following functions
         // depending on if the constuctor takes the variables or a separate function is required
-        _mydevice = new (allocateMemory(sizeof(MyCustomClass))) MyCustomClass(_pin1, _pin2);
+            _mydevice = new (allocateMemory(sizeof(MyCustomClass))) MyCustomClass(_dc_pin,_cs_pin,_sck_pin,_mosi_pin,_rst_pin,_rotation);
         _mydevice->attach(Parameter1, Parameter2);
         // if your custom device does not need a separate begin() function, delete the following
         // or this function could be called from the custom constructor or attach() function
@@ -200,7 +207,7 @@ void MFCustomDevice::attach(uint16_t adrPin, uint16_t adrType, uint16_t adrConfi
         ********************************************************************************** */
         // In most cases you need only one of the following functions
         // depending on if the constuctor takes the variables or a separate function is required
-        _mydevice = new (allocateMemory(sizeof(MyCustomClass))) MyCustomClass(_pin1, _pin2);
+        _mydevice = new (allocateMemory(sizeof(MyCustomClass))) MyCustomClass(_dc_pin,_cs_pin,_sck_pin,_mosi_pin,_rst_pin,_rotation);
         _mydevice->attach(Parameter1, Parameter2);
         // if your custom device does not need a separate begin() function, delete the following
         // or this function could be called from the custom constructor or attach() function

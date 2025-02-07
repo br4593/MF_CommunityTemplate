@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Arduino.h>
-#include "MyCustomClass.h"
+#include "ST7789.h"
 
 // only one entry required if you have only one custom device
 enum {
