@@ -24,7 +24,10 @@
       "FriendlyName": "MobiFlight ESP32-2432S032",
       "LatestFirmwareVersion": "2.5.1",
       "MobiFlightType": "MobiFlight ESP32-2432S032",
-      "ResetFirmwareFile": "reset.esp32_2432s032_merged.bin"
+      "ResetFirmwareFile": "reset.esp32_2432s032_merged.bin",
+      "CustomDeviceTypes": [
+        "ST7789"
+      ]
     },
     "ModuleLimits": {
       "MaxAnalogInputs": 18,
@@ -66,7 +69,7 @@
         "isAnalog": true,
         "isI2C": false,
         "isPWM": true,
-        "Name": "4/A3",
+        "Name": "4/Green",
         "Pin": 4
       },
       {
@@ -150,14 +153,14 @@
         "isAnalog": true,
         "isI2C": false,
         "isPWM": false,
-        "Name": "16/A15",
+        "Name": "16/Blue",
         "Pin": 16
       },
       {
         "isAnalog": true,
         "isI2C": false,
         "isPWM": false,
-        "Name": "17/A16",
+        "Name": "17/Red",
         "Pin": 17
       },
       {
